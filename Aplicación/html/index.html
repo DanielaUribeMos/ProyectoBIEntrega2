@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<title>Front Proyecto 1 BI</title>
+<style>
+   body {
+/* Location of the image */
+background:url("{{ url_for( 'static', path ='Background.png') }}");
+
+/* Background image is centered vertically and horizontally at all times */
+background-position: center center;
+
+/* Background image doesn't tile */
+background-repeat: no-repeat;
+
+/* Background image is fixed in the viewport so that it doesn't move when
+the content's height is greater than the image's height */
+background-attachment: fixed;
+
+/* This is what makes the background image rescale based
+on the container's size */
+background-size: cover;
+
+/* Set a background color that will be displayed
+while the background image is loading */
+background-color: #269ce0;
+}
+@font-face { font-family: SGBold; font-weight: bold; src: url("{{ url_for( 'static', path ='fonts/SpaceGrotesk-Bold.ttf') }}"); } 
+@font-face { font-family: SGMedium; font-weight: medium; src: url("{{ url_for( 'static', path ='fonts/SpaceGrotesk-Medium.ttf') }}");}
+    .box {
+        background-color: aqua;
+    }
+    .tituloGeneral {
+        font-family: SGBold;
+        text-align: center;
+        color: rgb(94, 182, 222);
+        align-items: center;
+        padding-left: 0px;
+    }
+
+    .titulo1 {
+        font-family: SGMedium;
+        text-align: center;
+        color: rgb(94, 182, 222);
+        align-items: center;
+        position: absolute;
+        top: 18%;
+        left: 39%;
+    }
+
+    .texto1 {
+        font-family: SGMedium;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        align-items: center;
+        position: absolute;
+        top: 26%;
+        left: 44%;
+    }
+
+    .cajita{
+        resize: none;
+        color: black;
+        top: 30%;
+        left: 44%;
+        background-color:  rgb(195, 226, 241);
+        border: 2px solid  rgb(0, 140, 205);
+    }
+
+    .respuesta {
+        font-family: SGBold;
+        text-align: center;
+        color:rgb(7,7,7);
+        align-items: center;
+        padding-right: 70px;
+        position: absolute;
+        top: 35%;
+        left: 39.5%;
+    }
+
+    .titulo2 {
+        font-family: SGMedium;
+        text-align: center;
+        color: rgb(94, 182, 222);
+        align-items: center;
+        position: absolute;
+        top: 45%;
+        left: 42%;
+    }
+
+    .upload-label {
+        font-family: SGMedium;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        align-items: center;
+        position: absolute;
+        top: -5%;
+        left: 46%;
+    }
+
+    .upload-form {
+        font-family: SGMedium;
+        width: 70%; /* Adjust the width as needed */
+        margin-left: -30%; /* Adjust the left margin as needed */
+        margin-top: 210px; /* Adjust the top margin as needed */
+        text-align: center; /* Center the text inside the input */
+    }
+
+    .upload-button{
+        font-family: SGMedium;
+        width: 20%; /* Adjust the width as needed */
+        margin-left: 40%; /* Adjust the left margin as needed */
+        margin-top: 18px;  /* Adjust the top margin as needed */
+        text-align: center; /* Center the text inside the input */
+        background-color:  rgb(171, 228, 255);
+        border: 2px solid  rgb(0, 140, 205);
+    }
+
+    .download-button{
+        font-family: SGMedium;
+        width: 90%; /* Adjust the width as needed */
+        margin-left: -1.5%; /* Adjust the left margin as needed */
+        margin-top: -8px;  /* Adjust the top margin as needed */
+        text-align: center; /* Center the text inside the input */
+        background-color:  rgb(171, 228, 255);
+        border: 2px solid  rgb(0, 140, 205);
+    }
+
+    .descarga{
+        font-family: SGMedium;
+        width: 15%; /* Adjust the width as needed */
+        margin-left: -1.5%; /* Adjust the left margin as needed */
+        margin-top: 300px;  /* Adjust the top margin as needed */
+        text-align: center; /* Center the text inside the input */
+    }
+
+    .upload-input {
+        font-family: SGMedium;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        align-items: center;
+        position: absolute;
+        top: 3%;
+        left: 20%;
+        border: none; /* Remove the border for some browsers */
+        background-color:  rgb(171, 228, 255);
+        border: 2px solid  rgb(0, 140, 205);
+    }
+
+
+
+    div{
+        align-content: center;
+        align-self: center;
+        vertical-align: auto;
+    }
+
+    form{  
+        resize: none;       
+        font-family:  SGBold;
+        text-align: justify;
+        color: rgb(0, 0, 0);
+        width: 600px;
+        height: 600px;
+        
+        position: absolute;
+        top: 70%;
+        left: 44%;
+        transform: translate(0, -50%);
+        margin: -25px 0 0 -25px;
+    }
+    
+    #cajita{
+        resize: none;
+        color: black;
+    }
+
+    #divBoton{
+        padding-left: 700px;
+        padding-top: 10px;
+    }
+
+    .divdeCaja{
+        font-family: SGMedium;
+        align-items: center;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .cajaInternaMensaje{
+        padding-bottom: 30px;
+        align-items: center;
+        text-align: center;
+        padding-left: 100px;
+        font-family: SGMedium;
+        text-align: center;
+        color: black;
+        width: 600px;
+        height: 600px;
+        position: fixed;
+        margin: auto;  
+    }
+
+    .botonEnviar{
+        font-family: SGMedium;
+        background-color:  rgb(171, 228, 255);
+        border: 2px solid  rgb(0, 140, 205);
+    }
+
+    img#imagen1 {
+            position: absolute;
+            top: 100px; /* Adjust the top position in pixels */
+            left: 200px; /* Adjust the left position in pixels */
+        }
+    img#imagen2 {
+            position: absolute;
+            top: 100px; /* Adjust the top position in pixels */
+            right: 200px; /* Adjust the left position in pixels */
+        }
+    img#imagen3 {
+            position: absolute;
+            top: 680px; /* Adjust the top position in pixels */
+            right: 480px; /* Adjust the left position in pixels */
+        }
+    img#imagen4 {
+            position: absolute;
+            top: 3px; /* Adjust the top position in pixels */
+            right: -15px; /* Adjust the left position in pixels */
+        }
+
+    img#imagen5 {
+            position: absolute;
+            top: 3px; /* Adjust the top position in pixels */
+            right: -15px; /* Adjust the left position in pixels */
+        }
+
+    img#imagen6 {
+            position: absolute;
+            top: 3px; /* Adjust the top position in pixels */
+            right: -15px; /* Adjust the left position in pixels */
+        }
+
+    
+
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    
+<div class="row">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="col-sm-12">
+    <H1 class ="tituloGeneral">Detección de objetivos 3, 4 y 5 de desarrollo<br>Comience a evaluar los textos</H1>
+    <H2 class="titulo1">Análisis textos individuales</H2>
+    </div >
+
+    <img id="imagen1" src="/static/ONU.png" width="300" height="200">
+    <div >
+        <label for="freeform" class="texto1">Inserte aquí el texto:</label>
+    </div> 
+    <img id="imagen2" src="/static/ONU.png" width="300" height="200">
+    
+    <form action = "/submit" method = "post"  rows="5" cols="50">
+    <input type = "text" name = "cajita" class="cajita">
+    <input type = "submit" class="botonEnviar">
+    
+    </form>
+    <div class="respuesta" >
+        <label for="freeform">El objetivo al que pertenece el texto es: </label>
+        {% if msg == "3" %}
+            <img id="imagen4" src="/static/Ob3.png"  width="80" height="80">
+        {% elif msg == "4" %}
+            <img id="imagen5" src="/static/Ob4.png"  width="80" height="80">
+        {% elif msg == "5" %}
+            <img id="imagen6" src="/static/Ob5.png"  width="80" height="80">
+        {% else %}
+            <p></p>
+        {% endif %}
+    </div> 
+
+    <H2 class="titulo2">Análisis de archivos</H2>
+    <div class="col-sm-12" >
+        <form action = "/file_analisis" method = "post" class="upload-form" enctype="multipart/form-data" id="upload-form">
+            <label class="upload-label">Subir archivo:</label>
+            <input type="file" name="file" class="upload-input" accept=".csv"> 
+            <button type="submit" class="upload-button">Empezar la lectura de CSV</button>
+        </form>
+        <form method="get" enctype="multipart/form-data" action="/download" class="descarga">
+            <button href="/download" class="download-button">Descargar resultados CSV</button>
+        </form>
+    </div>
+
+
+    <img id="imagen3" src="/static/Objetivos2.png" width="500" height="300">
+
+</div>
+
+</body>
+</html>
